@@ -1,0 +1,7 @@
+*.lock
+*.log
+*.scss.d.ts
+/.firebase
+/build
+/node_modules
+/stats.json

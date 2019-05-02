@@ -1,0 +1,90 @@
+{
+  "authors": [
+    {
+      "homepage": "https://dl2.dev",
+      "name": "DL2 IT Services, Ltd"
+    },
+    {
+      "homepage": "https://github.com/douggr",
+      "name": "Douglas Gontijo"
+    }
+  ],
+  "bundlesize": [
+    {
+      "compression": "none",
+      "maxSize": "10 kB",
+      "path": "build/**/*.js"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-angular": "^7.5.0",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.8",
+    "bulma": "^0.7.4",
+    "bundlesize": "^0.17.1",
+    "concurrently": "^4.1.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-synacor": "^3.0.4",
+    "husky": "^2.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.7.1",
+    "node-sass": "^4.12.0",
+    "preact": "^10.0.0-beta.0",
+    "preact-cli": "^3.0.0-rc.1",
+    "preact-router": "^3.0.0",
+    "preact-svg-loader": "^0.2.1",
+    "prettier": "^1.17.0",
+    "resolve-env-vars": "^1.0.0",
+    "rfs": "^8.0.4",
+    "sass-loader": "^7.1.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-order": "^3.0.0",
+    "stylelint-scss": "^3.6.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^5.4.5",
+    "tslint": "^5.16.0",
+    "tslint-consistent-codestyle": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.5",
+    "typings-for-css-modules-loader": "^1.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -x @commitlint/config-angular -e",
+      "pre-commit": "yarn lint"
+    }
+  },
+  "license": "MIT",
+  "name": "@dl2/skeleton-preact",
+  "private": true,
+  "resolutions": {},
+  "scripts": {
+    "build": "yarn ~build",
+    "build:fast": "yarn ~build",
+    "format": "concurrently yarn:~prettier:* && concurrently yarn:~format:*",
+    "lint": "concurrently yarn:~lint:*",
+    "postbuild": "bundlesize; echo",
+    "postbuild:fast": "bundlesize; echo",
+    "prebuild": "yarn test",
+    "start": "preact watch",
+    "test": "NODE_ENV=test jest",
+    "~build": "preact build --json --no-prerender",
+    "~format:js": "yarn ~lint:js --fix",
+    "~format:styles": "yarn ~lint:styles --fix",
+    "~format:ts": "yarn ~lint:ts --fix",
+    "~lint:js": "eslint --ignore-path .gitignore .",
+    "~lint:styles": "stylelint 'src/**/*.scss'",
+    "~lint:ts": "tslint -p tsconfig.json",
+    "~prettier": "prettier --ignore-path .gitignore --arrow-parens always --print-width 79 --trailing-comma all --write",
+    "~prettier:others": "yarn ~prettier '**/*.{js,json,scss}'",
+    "~prettier:ts": "yarn ~prettier --parser typescript 'src/**/*.{ts,tsx}'"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,142 @@
+/**
+ * https://dl2.io - DL2 IT Services Ltd
+ * Owlsome solutions. Owltstanding results.
+ */
+
+@import "../../styles/bootstrap";
+
+$dl2-navbar-background: $white-ter;
+$dl2-navbar-color: $link;
+$dl2-navbar-height: 10.5vh;
+$dl2-navbar-min-height: 72px;
+$dl2-navbar-speed: 120ms;
+$dl2-navbar-z-index: 30;
+
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: $size-7;
+  text-transform: lowercase;
+
+  & img,
+  & svg {
+    margin-right: 0.5vw;
+  }
+
+  &:hover {
+    color: $link;
+  }
+}
+
+.container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition-duration: $dl2-navbar-speed;
+  background-color: transparentize($black-ter, 0.17);
+  z-index: $dl2-navbar-z-index;
+}
+
+.menu {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: calc(98vw - 62px);
+  background-color: $white-ter;
+
+  &-active {
+    font-family: inherit;
+  }
+
+  &-item {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 1vw;
+    font-weight: $weight-medium;
+
+    &:hover {
+      font-family: inherit;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  height: $dl2-navbar-height;
+  min-height: $dl2-navbar-min-height;
+  padding: calc(#{$dl2-navbar-height} * 0.1) 1.5vw;
+  background-color: $dl2-navbar-background;
+}
+
+.opener {
+  &:active + .container,
+  &:focus + .container {
+    transform: none;
+    outline: 0;
+  }
+}
+
+.title {
+  @include rfs($size-1);
+  margin-right: 0.5vw;
+  transition: color $dl2-navbar-speed cubic-bezier(0, 0, 1, 1);
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $dl2-navbar-color;
+
+  &::first-letter,
+  &:hover {
+    color: $dl2-navbar-color;
+  }
+}
+
+@include desktop {
+  .opener {
+    display: none;
+  }
+
+  .container {
+    position: relative;
+    transform: none;
+    background-color: transparent;
+  }
+
+  .navbar {
+    padding: calc(#{$dl2-navbar-height} * 0.1) 10.5vw;
+  }
+
+  .menu {
+    position: relative;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    text-transform: uppercase;
+
+    &-active {
+      background-color: unset;
+    }
+
+    &-item {
+      width: auto;
+      margin-left: 2vw;
+
+      &:hover {
+        background-color: unset;
+      }
+    }
+  }
+}

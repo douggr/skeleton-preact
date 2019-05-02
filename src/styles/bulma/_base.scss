@@ -1,0 +1,26 @@
+/**
+ * https://dl2.io - DL2 IT Services Ltd
+ * Owlsome solutions. Owltstanding results.
+ */
+
+@import "./base/minireset";
+@import "./base/generic";
+@import "./base/helpers";
+
+img,
+svg {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  max-height: 100%;
+  fill: currentColor;
+}
+
+.layout {
+  min-height: 100vh;
+}

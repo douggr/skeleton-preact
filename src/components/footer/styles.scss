@@ -1,0 +1,37 @@
+/**
+ * https://dl2.io - DL2 IT Services Ltd
+ * Owlsome solutions. Owltstanding results.
+ */
+
+@import "../../styles/bootstrap";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: $size-3 1.5vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: $white-ter;
+  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.title {
+  @include rfs($size-1);
+  transition: color 120ms cubic-bezier(0, 0, 1, 1);
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $white-ter;
+
+  &::first-letter,
+  &:hover {
+    color: $white-ter;
+  }
+}
+
+@include desktop {
+  .footer {
+    flex-direction: row;
+    padding: $size-3 10.5vw;
+  }
+}

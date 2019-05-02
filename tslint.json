@@ -1,0 +1,40 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-consistent-codestyle"
+  ],
+  "linterOptions": {
+    "exclude": ["**/*.js", "**/*.pug.transpiled.jsx"]
+  },
+  "rules": {
+    "arrow-parens": [true, "always"],
+    "curly": true,
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "max-line-length": [true, 76],
+    "no-console": false,
+    "no-empty-interface": false,
+    "no-irregular-whitespace": true,
+    "object-curly-spacing": [true, "always"],
+    "prefer-const": true,
+    "semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "space-before-function-paren": [true, "never"],
+    "space-within-parens": true,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ]
+  }
+}

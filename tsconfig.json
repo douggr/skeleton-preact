@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    // "alwaysStrict": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "inlineSourceMap": false,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "lib": ["dom", "es2017", "es5", "es6"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES5"
+  },
+  "exclude": ["node_modules/**/*", "src/**/*.spec.ts"],
+  "include": ["src/**/*.tsx", "src/**/*.ts"]
+}
