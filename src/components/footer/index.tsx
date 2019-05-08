@@ -10,12 +10,11 @@ interface Props extends JSX.HTMLAttributes {
   //
 }
 
-interface State extends Readonly<T> {
+interface State {
   //
 }
 
-export default class Header extends Component<Props, State> {
-  // tslint:disable:max-line-length
+export default class Footer extends Component<Props, State> {
   public render() {
     return (
       <footer class={`has-background-grey ${styles.footer}`}>
@@ -23,9 +22,7 @@ export default class Header extends Component<Props, State> {
           Brand
         </a>
 
-        <span>
-          made with &lt;/&gt;
-        </span>
+        <span>made with &lt;/&gt;</span>
       </footer>
     );
   }

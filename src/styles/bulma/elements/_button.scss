@@ -5,3 +5,10 @@
 
 @import "./button/variables";
 @import "~bulma/sass/elements/button";
+
+.button {
+  min-width: 34px;
+  padding: 0 16px;
+  font-weight: $weight-medium;
+  text-transform: uppercase;
+}

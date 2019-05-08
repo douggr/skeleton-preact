@@ -3,4 +3,425 @@
  * Owlsome solutions. Owltstanding results.
  */
 
-@import "~bulma/sass/base/helpers";
+// @import "~bulma/sass/base/helpers";
+
+// Float
+.is-clearfix {
+  @include clearfix;
+}
+
+.is-pulled-left {
+  float: left;
+}
+
+.is-pulled-right {
+  float: right;
+}
+
+// Overflow
+.is-clipped {
+  overflow: hidden;
+}
+
+// Overlay
+.is-overlay {
+  @extend %overlay;
+}
+
+// Typography
+@mixin dl2-typography-size($target: "") {
+  @each $size in $sizes {
+    $i: index($sizes, $size);
+
+    .is-size-#{$i}#{if($target == "", "", "-" + $target)} {
+      @include rfs($size);
+    }
+  }
+}
+
+@include dl2-typography-size;
+
+@include mobile {
+  @include dl2-typography-size("mobile");
+}
+
+@include tablet {
+  @include dl2-typography-size("tablet");
+}
+
+@include touch {
+  @include dl2-typography-size("touch");
+}
+
+@include desktop {
+  @include dl2-typography-size("desktop");
+}
+
+@include widescreen {
+  @include dl2-typography-size("widescreen");
+}
+
+@include fullhd {
+  @include dl2-typography-size("fullhd");
+}
+
+$alignments: (
+  "centered": "center",
+  "justified": "justify",
+  "left": "left",
+  "right": "right",
+);
+
+@each $alignment, $text-align in $alignments {
+  .has-text-#{$alignment} {
+    text-align: #{$text-align};
+  }
+}
+
+@each $alignment, $text-align in $alignments {
+  @include mobile {
+    .has-text-#{$alignment}-mobile {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include tablet {
+    .has-text-#{$alignment}-tablet {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include tablet-only {
+    .has-text-#{$alignment}-tablet-only {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include touch {
+    .has-text-#{$alignment}-touch {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include desktop {
+    .has-text-#{$alignment}-desktop {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include desktop-only {
+    .has-text-#{$alignment}-desktop-only {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include widescreen {
+    .has-text-#{$alignment}-widescreen {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include widescreen-only {
+    .has-text-#{$alignment}-widescreen-only {
+      text-align: #{$text-align};
+    }
+  }
+
+  @include fullhd {
+    .has-text-#{$alignment}-fullhd {
+      text-align: #{$text-align};
+    }
+  }
+}
+
+.is-capitalized {
+  text-transform: capitalize;
+}
+
+.is-lowercase {
+  text-transform: lowercase;
+}
+
+.is-uppercase {
+  text-transform: uppercase;
+}
+
+.is-italic {
+  font-style: italic;
+}
+
+@each $name, $pair in $colors {
+  $color: nth($pair, 1);
+
+  .has-text-#{$name} {
+    color: $color;
+  }
+
+  a.has-text-#{$name} {
+    &:hover,
+    &:focus {
+      color: darken($color, 10%);
+    }
+  }
+
+  .has-background-#{$name} {
+    background-color: $color;
+  }
+}
+
+@each $name, $shade in $shades {
+  .has-text-#{$name} {
+    color: $shade;
+  }
+
+  .has-background-#{$name} {
+    background-color: $shade;
+  }
+}
+
+.has-text-weight-light {
+  font-weight: $weight-light;
+}
+
+.has-text-weight-normal {
+  font-weight: $weight-normal;
+}
+
+.has-text-weight-semibold {
+  font-weight: $weight-semibold;
+}
+
+.has-text-weight-bold {
+  font-weight: $weight-bold;
+}
+
+.is-family-primary {
+  font-family: $family-primary;
+}
+
+.is-family-secondary {
+  font-family: $family-secondary;
+}
+
+.is-family-sans-serif {
+  font-family: $family-sans-serif;
+}
+
+.is-family-monospace {
+  font-family: $family-monospace;
+}
+
+.is-family-code {
+  font-family: $family-code;
+}
+
+// Visibility
+$displays: "block" "flex" "inline" "inline-block" "inline-flex";
+
+@each $display in $displays {
+  .is-#{$display} {
+    display: #{$display};
+  }
+
+  @include mobile {
+    .is-#{$display}-mobile {
+      display: #{$display};
+    }
+  }
+
+  @include tablet {
+    .is-#{$display}-tablet {
+      display: #{$display};
+    }
+  }
+
+  @include tablet-only {
+    .is-#{$display}-tablet-only {
+      display: #{$display};
+    }
+  }
+
+  @include touch {
+    .is-#{$display}-touch {
+      display: #{$display};
+    }
+  }
+
+  @include desktop {
+    .is-#{$display}-desktop {
+      display: #{$display};
+    }
+  }
+
+  @include desktop-only {
+    .is-#{$display}-desktop-only {
+      display: #{$display};
+    }
+  }
+
+  @include widescreen {
+    .is-#{$display}-widescreen {
+      display: #{$display};
+    }
+  }
+
+  @include widescreen-only {
+    .is-#{$display}-widescreen-only {
+      display: #{$display};
+    }
+  }
+
+  @include fullhd {
+    .is-#{$display}-fullhd {
+      display: #{$display};
+    }
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+
+.is-sr-only {
+  position: absolute;
+  width: 0.01em;
+  height: 0.01em;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@include mobile {
+  .is-hidden-mobile {
+    display: none;
+  }
+}
+
+@include tablet {
+  .is-hidden-tablet {
+    display: none;
+  }
+}
+
+@include tablet-only {
+  .is-hidden-tablet-only {
+    display: none;
+  }
+}
+
+@include touch {
+  .is-hidden-touch {
+    display: none;
+  }
+}
+
+@include desktop {
+  .is-hidden-desktop {
+    display: none;
+  }
+}
+
+@include desktop-only {
+  .is-hidden-desktop-only {
+    display: none;
+  }
+}
+
+@include widescreen {
+  .is-hidden-widescreen {
+    display: none;
+  }
+}
+
+@include widescreen-only {
+  .is-hidden-widescreen-only {
+    display: none;
+  }
+}
+
+@include fullhd {
+  .is-hidden-fullhd {
+    display: none;
+  }
+}
+
+.is-invisible {
+  visibility: hidden;
+}
+
+@include mobile {
+  .is-invisible-mobile {
+    visibility: hidden;
+  }
+}
+
+@include tablet {
+  .is-invisible-tablet {
+    visibility: hidden;
+  }
+}
+
+@include tablet-only {
+  .is-invisible-tablet-only {
+    visibility: hidden;
+  }
+}
+
+@include touch {
+  .is-invisible-touch {
+    visibility: hidden;
+  }
+}
+
+@include desktop {
+  .is-invisible-desktop {
+    visibility: hidden;
+  }
+}
+
+@include desktop-only {
+  .is-invisible-desktop-only {
+    visibility: hidden;
+  }
+}
+
+@include widescreen {
+  .is-invisible-widescreen {
+    visibility: hidden;
+  }
+}
+
+@include widescreen-only {
+  .is-invisible-widescreen-only {
+    visibility: hidden;
+  }
+}
+
+@include fullhd {
+  .is-invisible-fullhd {
+    visibility: hidden;
+  }
+}
+
+// Other
+.is-marginless {
+  margin: 0;
+}
+
+.is-paddingless {
+  padding: 0;
+}
+
+.is-radiusless {
+  border-radius: 0;
+}
+
+.is-shadowless {
+  box-shadow: none;
+}
+
+.is-unselectable {
+  @extend %unselectable;
+}

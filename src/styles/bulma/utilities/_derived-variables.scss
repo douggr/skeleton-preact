@@ -3,4 +3,7 @@
  * Owlsome solutions. Owltstanding results.
  */
 
-@import "./derived-variables/variables";
+@import "~bulma/sass/utilities/derived-variables";
+
+$link-focus: transparentize($link, 0.17);
+$link-hover: transparentize($link, 0.37);

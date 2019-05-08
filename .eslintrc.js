@@ -20,7 +20,7 @@ module.exports = {
     "prefer-const": "error",
     quotes: [
       "error",
-      "single",
+      "double",
       {
         avoidEscape: true,
       },

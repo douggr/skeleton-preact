@@ -3,5 +3,8 @@
  * Owlsome solutions. Owltstanding results.
  */
 
-@import "./initial-variables/variables";
+@import "~bulma/sass/utilities/initial-variables";
 @import "./functions";
+
+@import "./initial-variables/colors";
+@import "./initial-variables/type";

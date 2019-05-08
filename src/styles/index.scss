@@ -3,16 +3,19 @@
  * Owlsome solutions. Owltstanding results.
  */
 
+// npm modules
+
+// local modules
 @import "./bootstrap";
 
 @import "./bulma/utilities/animations";
 @import "./bulma/base";
 
-// @import "./bulma/grid/columns";
+@import "./bulma/grid/columns";
 // @import "./bulma/grid/tiles";
 
-@import "./bulma/layout/hero";
-// @import "./bulma/layout/section";
+// @import "./bulma/layout/hero";
+@import "./bulma/layout/section";
 // @import "./bulma/layout/footer";
 
 // @import "./bulma/components/breadcrumb";
@@ -33,10 +36,10 @@
 @import "./bulma/elements/button";
 // @import "./bulma/elements/container";
 // @import "./bulma/elements/content";
-// @import "./bulma/elements/form";
-// @import "./bulma/elements/icon";
+@import "./bulma/elements/form";
+@import "./bulma/elements/icon";
 // @import "./bulma/elements/image";
-// @import "./bulma/elements/notification";
+@import "./bulma/elements/notification";
 // @import "./bulma/elements/progress";
 // @import "./bulma/elements/table";
 // @import "./bulma/elements/tag";

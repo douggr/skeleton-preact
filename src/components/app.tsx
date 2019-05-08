@@ -4,36 +4,60 @@
  */
 
 import { Identity } from "@dl2/identity-interface";
-import { Component, h } from "preact";
+import { h } from "preact";
 import { Route, Router, RouterOnChangeArgs } from "preact-router";
+import AccountCreate from "../routes/account/create";
+import AccountResetPassword from "../routes/account/reset-password";
 import Home from "../routes/home";
+import Login from "../routes/login";
+import { Auth } from "../services/auth";
 import Footer from "./footer";
 import NavBar from "./navbar";
+import ShowNavBar from "./page/show-navbar";
 
 interface Props extends JSX.HTMLAttributes {
   //
 }
 
-interface State extends Readonly<T> {
-  //
+interface State {
+  identity: null | Identity;
 }
 
-export default class App extends Component<Props, State> {
+export default class App extends ShowNavBar<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      identity: Auth.identity,
+    };
+  }
+
   public componentDidMount() {
     const $loader = document.getElementById("loader");
+    const $navbar = document.getElementById("site-navbar");
 
     if ($loader) {
       $loader.remove();
     }
+
+    if ($navbar) {
+      $navbar.classList.remove("is-hidden");
+    }
   }
 
-  public render() {
+  public render({  }: Props, { identity }: State) {
+    // prettier-ignore
     return (
       <div class="layout" id="layout">
-        <NavBar />
+        <NavBar identity={identity} />
         <main class={`dl2-env--${process.env.NODE_ENV}`}>
           <Router onChange={this.$handleRoute}>
+            <Route component={AccountCreate} path="/join" />
+            <Route component={AccountResetPassword} path="/reset-password" />
             <Route component={Home} default={true} />
+
+            {!identity && <Route component={Login} path="/login" />}
+            {identity  && <Route component={this.$logout} path="/logout" />}
           </Router>
         </main>
         <Footer />
@@ -45,7 +69,15 @@ export default class App extends Component<Props, State> {
     this.$scrollIntoView(event.url);
   };
 
+  private $logout = () => {
+    this.setState({ identity: Auth.logout() });
+
+    return null;
+  };
+
   private $scrollIntoView = (url: string) => {
+    this.setState({ identity: Auth.identity });
+
     if (!url || url === "/") {
       return window.scroll({
         behavior: "smooth",

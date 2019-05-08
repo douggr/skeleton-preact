@@ -3,9 +3,9 @@
  * Owlsome solutions. Owltstanding results.
  */
 
-import { DefinePlugin, WatchIgnorePlugin } from 'webpack';
-import resolveEnvVars from 'resolve-env-vars';
-import TerserPlugin from 'terser-webpack-plugin';
+import { DefinePlugin, WatchIgnorePlugin } from "webpack";
+import resolveEnvVars from "resolve-env-vars";
+import TerserPlugin from "terser-webpack-plugin";
 
 /**
  * Mutates original webpack config
@@ -20,24 +20,24 @@ import TerserPlugin from 'terser-webpack-plugin';
 export default function(config, env, helpers) {
   const { mode } = config;
 
-  helpers.getLoadersByName(config, 'css-loader').forEach(({ loader }) => {
-    loader.loader = 'typings-for-css-modules-loader';
+  helpers.getLoadersByName(config, "css-loader").forEach(({ loader }) => {
+    loader.loader = "typings-for-css-modules-loader";
     loader.options = Object.assign(loader.options, {
       camelCase: true,
-      localIdentName: 'dl2__[hash:base64:8]',
+      localIdentName: "dl2__[hash:base64:8]",
       module: true,
       namedExport: true,
       silent: false,
     });
   });
 
-  if (mode === 'production' && !!config.optimization.minimizer) {
+  if (mode === "production" && !!config.optimization.minimizer) {
     config.optimization.minimizer.map((minimizer) => {
       if (minimizer instanceof TerserPlugin) {
         Object.assign(minimizer.options, {
           sourceMap: false,
           terserOptions: {
-            extractComments: 'all',
+            extractComments: "all",
             compress: {
               drop_console: true,
             },
@@ -47,7 +47,7 @@ export default function(config, env, helpers) {
     });
   }
 
-  const { stringified } = resolveEnvVars('DL2_');
+  const { stringified } = resolveEnvVars("DL2_");
   config.plugins.push(new DefinePlugin(stringified));
   config.plugins.push(new WatchIgnorePlugin([/css.d.ts$/]));
 

@@ -9,7 +9,3 @@ declare module "*.svg" {
 }
 
 import JSX = preact.JSX;
-
-interface T {
-  [key: string]: any;
-}

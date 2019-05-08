@@ -3,8 +3,8 @@
  * Owlsome solutions. Owltstanding results.
  */
 
-import './styles';
-import App from './components/app';
-import { h } from 'preact';
+import "./styles";
+import App from "./components/app";
+import { h } from "preact";
 
 export default App;

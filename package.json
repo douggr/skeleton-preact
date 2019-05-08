@@ -16,14 +16,17 @@
       "path": "build/**/*.js"
     }
   ],
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-angular": "^7.5.0",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@dl2/identity-interface": "^2.0.1",
+    "@material/ripple": "^2.0.0",
     "@types/jest": "^24.0.12",
-    "@types/node": "^11.13.8",
+    "@types/node": "^12.0.0",
     "bulma": "^0.7.4",
     "bundlesize": "^0.17.1",
     "concurrently": "^4.1.0",
@@ -32,10 +35,11 @@
     "eslint-config-synacor": "^3.0.4",
     "husky": "^2.1.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "node-sass": "^4.12.0",
-    "preact": "^10.0.0-beta.0",
+    "preact": "^10.0.0-beta.1",
     "preact-cli": "^3.0.0-rc.1",
+    "preact-forms-helper": "^0.7.5",
     "preact-router": "^3.0.0",
     "preact-svg-loader": "^0.2.1",
     "prettier": "^1.17.0",
@@ -47,7 +51,7 @@
     "stylelint-order": "^3.0.0",
     "stylelint-scss": "^3.6.1",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^5.4.5",
+    "ts-loader": "^6.0.0",
     "tslint": "^5.16.0",
     "tslint-consistent-codestyle": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0",
@@ -57,7 +61,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -x @commitlint/config-angular -e",
+      "commit-msg": "commitlint -e",
       "pre-commit": "yarn lint"
     }
   },
@@ -74,6 +78,7 @@
     "postbuild:fast": "bundlesize; echo",
     "prebuild": "yarn test",
     "start": "preact watch",
+    "start:local": "DL2_API_BASE_URL_DEVELOPMENT='http://0.0.0.0:8042' preact watch",
     "test": "NODE_ENV=test jest",
     "~build": "preact build --json --no-prerender",
     "~format:js": "yarn ~lint:js --fix",
@@ -82,7 +87,7 @@
     "~lint:js": "eslint --ignore-path .gitignore .",
     "~lint:styles": "stylelint 'src/**/*.scss'",
     "~lint:ts": "tslint -p tsconfig.json",
-    "~prettier": "prettier --ignore-path .gitignore --arrow-parens always --print-width 79 --trailing-comma all --write",
+    "~prettier": "prettier --ignore-path .gitignore --arrow-parens always --print-width 74 --trailing-comma all --write",
     "~prettier:others": "yarn ~prettier '**/*.{js,json,scss}'",
     "~prettier:ts": "yarn ~prettier --parser typescript 'src/**/*.{ts,tsx}'"
   },

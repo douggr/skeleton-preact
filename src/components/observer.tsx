@@ -54,14 +54,12 @@ export class Observer extends Component<Props, State> {
     }
   }
 
-  // tslint:disable:max-line-length
-  // prettier-ignore
   public render({ children, ...props }: Props, { visible }: State) {
+    // prettier-ignore
     return (
       <span {...props} ref={($el) => { this.container = $el; }}>
         {Array.isArray(children) ? children.map((c) => c(visible)) : children(visible)}
       </span>
     );
   }
-  // tslint:enable
 }
