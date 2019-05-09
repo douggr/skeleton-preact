@@ -5,3 +5,7 @@
 
 @import "./notification/variables";
 @import "~bulma/sass/elements/notification";
+
+.notification {
+  @include mdc-elevation(2);
+}

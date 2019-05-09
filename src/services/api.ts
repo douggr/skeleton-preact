@@ -5,16 +5,11 @@
 
 import { Auth } from "./auth";
 
-const APP_API_BASE_URL =
-  process.env[
-    ["DL2_API_BASE_URL", process.env.NODE_ENV].join("_").toUpperCase()
-  ];
+const DL2_API_BASE_URL = process.env.DL2_API_BASE_URL;
 
 const APP_DEFAULT_HEADERS = {
   "Charset": "utf-8",
   "Content-Type": "application/json",
-  "X-DL2-Client-Domain": "foo.com",
-  "X-DL2-Client-ID": "crap",
 };
 
 export interface TRequestInit extends RequestInit {
@@ -61,23 +56,27 @@ export async function api<R>(
   const $timeout = setTimeout(() => controller.abort(), 3000);
 
   // prettier-ignore
-  return fetch(`${APP_API_BASE_URL}${endpoint}`, options)
+  return fetch(`${DL2_API_BASE_URL}${endpoint}`, options)
     .then(async(response: Response) => {
       const text = JSON.parse(await response.text());
 
       if (response.status > 299) {
+        alert(text);
+
         throw new ApiError(text, response.status);
       }
 
       return text;
     })
-    // .catch((err: any) => {
-    //   if (!(err instanceof ApiError)) {
-    //     err = new ApiError(err.message || err, 500);
-    //   }
-    //
-    //   return Promise.reject(err);
-    // })
+    .catch((err: any) => {
+      if (!(err instanceof ApiError)) {
+        err = new ApiError(err.message || err, 500);
+      }
+
+      alert(err.message || err);
+
+      return Promise.reject(err);
+    })
     .finally(() => {
       clearTimeout($timeout);
     });

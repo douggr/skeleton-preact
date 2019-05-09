@@ -21,10 +21,14 @@ svg {
   fill: currentColor;
 }
 
-.layout {
-  min-height: 100vh;
+textarea {
+  resize: horizontal;
 }
 
 .delete {
   @extend %delete;
+}
+
+.layout {
+  min-height: 100vh;
 }

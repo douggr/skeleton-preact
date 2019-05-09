@@ -7,7 +7,7 @@
 
 $dl2-navbar-background: $white-ter;
 $dl2-navbar-color: $link;
-$dl2-navbar-height: 10.5vh;
+$dl2-navbar-height: 5.5vh;
 $dl2-navbar-min-height: 72px;
 $dl2-navbar-speed: 120ms;
 $dl2-navbar-z-index: 30;
@@ -72,6 +72,7 @@ $dl2-navbar-z-index: 30;
 }
 
 .navbar {
+  @include mdc-elevation(2);
   display: flex;
   position: relative;
   align-items: center;
